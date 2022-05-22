@@ -652,6 +652,13 @@ public final class Config
 	public static boolean CUSTOM_MULTISELL_LOAD;
 	public static boolean CUSTOM_BUYLIST_LOAD;
 	// --------------------------------------------------
+	// Custom Settings (5/22/2022)
+    // Announce Castle Lord & Clan Leader and Hero On Enter
+	// --------------------------------------------------
+	public static boolean ANNOUNCE_CASTLE_LORDS_ON_ENTER;
+	public static boolean ANNOUNCE_HERO_ON_ENTER;
+	public static boolean ANNOUNCE_CLAN_LEADER_ON_ENTER;
+	// --------------------------------------------------
 	// Character Restriction
 	// --------------------------------------------------
 	public static boolean ALLOW_HUMAN;
@@ -2062,6 +2069,11 @@ public final class Config
 				PC_BANG_POINT_RATE = 1;
 			}
 			RANDOM_PC_BANG_POINT = Custom.getBoolean("AcquisitionPointsRandom", false);
+			
+            // Load Announce Castle Lord & Clan Leader and Hero On Enter
+			ANNOUNCE_CASTLE_LORDS_ON_ENTER = Custom.getBoolean("AnnounceCastleLordsOnEnter", true);
+			ANNOUNCE_CLAN_LEADER_ON_ENTER = Custom.getBoolean("AnnounceClanLeaderOnEnter", true);
+			ANNOUNCE_HERO_ON_ENTER = Custom.getBoolean("AnnounceHeroOnEnter", true);
 			
 			ALT_BIRTHDAY_GIFT = General.getInt("AltBirthdayGift", 22187);
 			ALT_BIRTHDAY_MAIL_SUBJECT = General.getString("AltBirthdayMailSubject", "Happy Birthday!");

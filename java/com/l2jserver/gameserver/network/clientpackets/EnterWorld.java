@@ -84,6 +84,7 @@ import com.l2jserver.gameserver.network.serverpackets.QuestList;
 import com.l2jserver.gameserver.network.serverpackets.ShortCutInit;
 import com.l2jserver.gameserver.network.serverpackets.SkillCoolTime;
 import com.l2jserver.gameserver.network.serverpackets.SystemMessage;
+import com.l2jserver.gameserver.util.Broadcast;
 
 /**
  * Enter World Packet Handler
@@ -454,6 +455,13 @@ public class EnterWorld extends L2GameClientPacket
 			notice.disableValidation();
 			sendPacket(notice);
 		}
+
+		if (Config.ANNOUNCE_CLAN_LEADER_ON_ENTER && activeChar.isClanLeader())
+		{
+			Broadcast.toAllOnlinePlayers("The Clan Leader " + activeChar.getName() + " has logged in!");
+		}
+		
+
 		else if (Config.SERVER_NEWS)
 		{
 			String serverNews = HtmCache.getInstance().getHtm(activeChar.getHtmlPrefix(), "data/html/servnews.htm");
@@ -553,6 +561,25 @@ public class EnterWorld extends L2GameClientPacket
 		if (Config.WELCOME_MESSAGE_ENABLED)
 		{
 			activeChar.sendPacket(new ExShowScreenMessage(Config.WELCOME_MESSAGE_TEXT, Config.WELCOME_MESSAGE_TIME));
+		}
+		
+		if (Config.ANNOUNCE_CASTLE_LORDS_ON_ENTER)
+		{
+			if (activeChar.getClan() != null)
+			{
+				if (activeChar.getClan().getLeaderName().equals(activeChar.getName()))
+				{
+					if (CastleManager.getInstance().getCastleByOwner(activeChar.getClan()) != null)
+					{
+						Broadcast.toAllOnlinePlayers(activeChar.getName() + ", Lord of " + CastleManager.getInstance().getCastleByOwner(activeChar.getClan()).getName() + " castle has logged in!");
+					}
+				}
+			}
+		}
+		
+		if ((Config.ANNOUNCE_HERO_ON_ENTER && activeChar.isHero()))
+		{
+			Broadcast.toAllOnlinePlayers("Hero " + activeChar.getName() + " has logged in!");
 		}
 		
 		L2ClassMasterInstance.showQuestionMark(activeChar);
