@@ -60,6 +60,7 @@ import com.l2jserver.gameserver.network.SystemMessageId;
 import com.l2jserver.gameserver.network.serverpackets.PlaySound;
 import com.l2jserver.gameserver.network.serverpackets.PledgeShowInfoUpdate;
 import com.l2jserver.gameserver.network.serverpackets.SystemMessage;
+import com.l2jserver.gameserver.util.Broadcast;
 
 public final class Castle extends AbstractResidence
 {
@@ -510,6 +511,7 @@ public final class Castle extends AbstractResidence
 					_log.log(Level.WARNING, "Exception in setOwner: " + e.getMessage(), e);
 				}
 				oldOwner.setCastleId(0); // Unset has castle flag for old owner
+				Broadcast.toAllOnlinePlayers(oldOwner.getName() + " has lost " + getName() + " castle!");
 				for (L2PcInstance member : oldOwner.getOnlineMembers(0))
 				{
 					removeResidentialSkills(member);
@@ -559,6 +561,7 @@ public final class Castle extends AbstractResidence
 				member.sendSkillList();
 			}
 			clan.setCastleId(0);
+			Broadcast.toAllOnlinePlayers(clan.getName() + " has lost " + getName() + " castle!");
 			clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan));
 		}
 		
@@ -871,6 +874,7 @@ public final class Castle extends AbstractResidence
 			if (clan != null)
 			{
 				clan.setCastleId(getResidenceId()); // Set has castle flag for new owner
+				Broadcast.toAllOnlinePlayers(clan.getName() + " has taken " + getName() + " castle!");
 				clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan));
 				clan.broadcastToOnlineMembers(new PlaySound(1, "Siege_Victory", 0, 0, 0, 0, 0));
 			}
