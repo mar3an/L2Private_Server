@@ -659,6 +659,14 @@ public final class Config
 	public static boolean ANNOUNCE_HERO_ON_ENTER;
 	public static boolean ANNOUNCE_CLAN_LEADER_ON_ENTER;
 	// --------------------------------------------------
+	// Lucky Pig
+	// --------------------------------------------------
+	public static boolean LUCKY_PID_SPAWN_ENABLED;
+    public static int LUCKY_PID_LOW_ADENA;
+    public static int LUCKY_PID_MEDIUM_ADENA;
+    public static int LUCKY_PID_TOP_ADENA;
+    public static int LUCKY_PID_CHANCE;
+	// --------------------------------------------------
 	// Character Restriction
 	// --------------------------------------------------
 	public static boolean ALLOW_HUMAN;
@@ -2074,6 +2082,12 @@ public final class Config
 			ANNOUNCE_CASTLE_LORDS_ON_ENTER = Custom.getBoolean("AnnounceCastleLordsOnEnter", true);
 			ANNOUNCE_CLAN_LEADER_ON_ENTER = Custom.getBoolean("AnnounceClanLeaderOnEnter", true);
 			ANNOUNCE_HERO_ON_ENTER = Custom.getBoolean("AnnounceHeroOnEnter", true);
+			
+			LUCKY_PID_SPAWN_ENABLED = Custom.getBoolean("EventLuckyPigEnabled", false);
+            LUCKY_PID_LOW_ADENA = Custom.getInt("LuckyPigLowAdena", 500);
+            LUCKY_PID_MEDIUM_ADENA = Custom.getInt("LuckyPigMediumAdena", 1000);
+            LUCKY_PID_TOP_ADENA = Custom.getInt("LuckyPigTopAdena", 2000);
+            LUCKY_PID_CHANCE = Custom.getInt("LuckyPigChance", 3);
 			
 			ALT_BIRTHDAY_GIFT = General.getInt("AltBirthdayGift", 22187);
 			ALT_BIRTHDAY_MAIL_SUBJECT = General.getString("AltBirthdayMailSubject", "Happy Birthday!");
