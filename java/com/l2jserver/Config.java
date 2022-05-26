@@ -97,6 +97,7 @@ public final class Config
 	public static final String CH_SIEGE_FILE = "./config/ConquerableHallSiege.ini";
 	public static final String GEODATA_FILE = "./config/GeoData.ini";
 	public static final String CUSTOM_CONFIG_FILE = "./config/Custom.ini";
+	public static final String KRATEISCUBE_CONFIG_FILE = "./config/KrateisCube.ini";
 	// --------------------------------------------------
 	// L2J Property File Definitions(Internet Connections)
 	// --------------------------------------------------
@@ -721,6 +722,19 @@ public final class Config
 	public static int DOUBLE_PC_BANG_POINTS_CHANCE;
 	public static double PC_BANG_POINT_RATE;
 	public static boolean RANDOM_PC_BANG_POINT;
+	// --------------------------------------------------
+	// Krateis Cube Settings
+	// --------------------------------------------------
+	public static boolean KRATEIS_CUBE_EVENT_ENABLED;
+	public static boolean KRATEIS_CUBE_EVENT_LOG_ENABLED;
+	public static int KRATEIS_CUBE_REGISTRATION_TIME;
+	public static int KRATEIS_CUBE_RUNNING_TIME;
+	public static int KRATEIS_CUBE_TIME_TO_REVIVE;
+	public static int KRATEIS_CUBE_TIME_OF_PROTECTION;
+	public static int KRATEIS_CUBE_MIN_PLAYER;
+	public static int KRATEIS_CUBE_MAX_PLAYER;
+	public static int KRATEIS_REWARD_TO_KILL_PLAYER;
+	public static int KRATEIS_REWARD_TO_KILL_MOB;
 	// --------------------------------------------------
 	// FloodProtector Settings
 	// --------------------------------------------------
@@ -2088,6 +2102,19 @@ public final class Config
             LUCKY_PID_MEDIUM_ADENA = Custom.getInt("LuckyPigMediumAdena", 1000);
             LUCKY_PID_TOP_ADENA = Custom.getInt("LuckyPigTopAdena", 2000);
             LUCKY_PID_CHANCE = Custom.getInt("LuckyPigChance", 3);
+			
+			// Load L2Properties Krateis Cube file
+			final PropertiesParser KrateisCube = new PropertiesParser(KRATEISCUBE_CONFIG_FILE);
+			KRATEIS_CUBE_EVENT_ENABLED = KrateisCube.getBoolean("KrateisCubeEventEnabled", true);
+			KRATEIS_CUBE_EVENT_LOG_ENABLED = KrateisCube.getBoolean("KrateisCubeEventLogEnabled", true);
+			KRATEIS_CUBE_REGISTRATION_TIME = KrateisCube.getInt("KrateisCubeEventRegistrationTime", 3);
+			KRATEIS_CUBE_RUNNING_TIME = KrateisCube.getInt("KrateisCubeEventRunningTime", 20);
+			KRATEIS_CUBE_TIME_TO_REVIVE = KrateisCube.getInt("KrateisCubeEventTimeToRevive", 10);
+			KRATEIS_CUBE_TIME_OF_PROTECTION = KrateisCube.getInt("KrateisCubeEventTimeOfProtection", 3);
+			KRATEIS_CUBE_MIN_PLAYER = KrateisCube.getInt("KrateisCubeEventMinPlayer", 1);
+			KRATEIS_CUBE_MAX_PLAYER = KrateisCube.getInt("KrateisCubeEventMaxPlayer", 25);
+			KRATEIS_REWARD_TO_KILL_PLAYER = KrateisCube.getInt("KrateisCubeEventRewardToKillPlayer", 10);
+			KRATEIS_REWARD_TO_KILL_MOB = KrateisCube.getInt("KrateisCubeEventRewardToKillMob", 3);
 			
 			ALT_BIRTHDAY_GIFT = General.getInt("AltBirthdayGift", 22187);
 			ALT_BIRTHDAY_MAIL_SUBJECT = General.getString("AltBirthdayMailSubject", "Happy Birthday!");

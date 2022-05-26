@@ -108,6 +108,7 @@ import com.l2jserver.gameserver.instancemanager.GrandBossManager;
 import com.l2jserver.gameserver.instancemanager.InstanceManager;
 import com.l2jserver.gameserver.instancemanager.ItemAuctionManager;
 import com.l2jserver.gameserver.instancemanager.ItemsOnGroundManager;
+import com.l2jserver.gameserver.instancemanager.KrateisCubeManager;
 import com.l2jserver.gameserver.instancemanager.MailManager;
 import com.l2jserver.gameserver.instancemanager.MapRegionManager;
 import com.l2jserver.gameserver.instancemanager.MercTicketManager;
@@ -342,6 +343,11 @@ public final class GameServer
 		if ((Config.AUTODESTROY_ITEM_AFTER > 0) || (Config.HERB_AUTO_DESTROY_TIME > 0))
 		{
 			ItemsAutoDestroy.getInstance();
+		}
+		
+		if (Config.KRATEIS_CUBE_EVENT_ENABLED)
+		{
+			KrateisCubeManager.getInstance();
 		}
 		
 		MonsterRace.getInstance();
