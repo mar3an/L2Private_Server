@@ -682,12 +682,6 @@ public final class Config
 	public static boolean ENABLE_CHAR_TITLE;
 	public static String CHAR_TITLE;
 	// --------------------------------------------------
-	// Welcome Message PM
-	// --------------------------------------------------
-	public static boolean SHOW_WELCOME_PM;
-	public static String PM_FROM;
-	public static String PM_TEXT;
-	// --------------------------------------------------
 	// RaidBoss Killed Announce
 	// --------------------------------------------------
 	public static boolean RAIDBOSS_KILLED_ANNOUNCE;
@@ -2038,11 +2032,6 @@ public final class Config
 			// Load Character title L2Properties file
 			ENABLE_CHAR_TITLE = Custom.getBoolean("EnableCharTitle", true);
 			CHAR_TITLE = Custom.getString("CharTitle", "World of Heroes");
-			
-			// Load Welcome Message PM L2Properties file
-			SHOW_WELCOME_PM = Custom.getBoolean("ShowWelcomePM", true);
-			PM_FROM = Custom.getString("PMFrom", "High Five Server");
-			PM_TEXT = Custom.getString("PMText", "Welcome and Enjoy Our Server!");
 			
 			// RaidBoss Killed Announce L2Properties file
 			RAIDBOSS_KILLED_ANNOUNCE = Custom.getBoolean("RaidBossKilledAnnounce", true);
